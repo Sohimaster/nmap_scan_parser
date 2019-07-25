@@ -12,7 +12,6 @@ class NmapScanParser:
     @staticmethod
     def get_services(block: str, stop_word: str):
         """
-
         :param block:
             Nmap scan report for 8.8.8.8
             Not shown: 999 closed ports
@@ -20,7 +19,6 @@ class NmapScanParser:
             8081/tcp open  blackice-icecap
         :param stop_word: A word after which list of services beginning
         :return: ['8081/tcp open  blackice-icecap', ...]
-
         """
         padding = block.index(stop_word)
         return block[padding + len(stop_word) + 1:].split('\n')
@@ -28,10 +26,8 @@ class NmapScanParser:
     @staticmethod
     def parse_services_to_json(services: list):
         """
-
         :param services: ['80/tcp   open  http', '22/tcp   open  ssh', ... ]
         :return: [{'port': '80/tcp', 'state': 'open', 'protocol': 'http'}, ...]
-
         """
         result = []
         for service in services:
@@ -57,7 +53,6 @@ class NmapScanParser:
 
     def parse(self):
         """
-
         :param input_file
 
             Nmap scan report for 8.8.8.8
@@ -71,7 +66,6 @@ class NmapScanParser:
             8181/tcp open  intermapper
 
             ...
-
         """
         with open('local_network_scan', 'r') as file:
             scan_content = file.read()
