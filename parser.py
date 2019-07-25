@@ -67,7 +67,7 @@ class NmapScanParser:
 
             ...
         """
-        with open('local_network_scan', 'r') as file:
+        with open(self.input, 'r') as file:
             scan_content = file.read()
 
         splitted = scan_content.split('\n\n')
