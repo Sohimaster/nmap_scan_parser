@@ -20,6 +20,7 @@ class NmapScanParser:
             8081/tcp open  blackice-icecap
         :param stop_word: A word after which list of services beginning
         :return: ['8081/tcp open  blackice-icecap', ...]
+
         """
         padding = block.index(stop_word)
         return block[padding + len(stop_word) + 1:].split('\n')
@@ -30,6 +31,7 @@ class NmapScanParser:
 
         :param services: ['80/tcp   open  http', '22/tcp   open  ssh', ... ]
         :return: [{'port': '80/tcp', 'state': 'open', 'protocol': 'http'}, ...]
+
         """
         result = []
         for service in services:
@@ -55,6 +57,7 @@ class NmapScanParser:
 
     def parse(self):
         """
+
         :param input_file
 
             Nmap scan report for 8.8.8.8
